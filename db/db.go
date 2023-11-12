@@ -27,3 +27,10 @@ func NewDB() *gorm.DB {
 	fmt.Println("Connected")
 	return db
 }
+
+func CloseDB(db *gorm.DB) {
+	sqlDB, _ := db.DB()
+	if err := sqlDB.Close(); err != nil {
+		log.Fatalln(err)
+	}
+}
